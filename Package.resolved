@@ -1,0 +1,24 @@
+{
+  "originHash" : "55dfbe9754af53d28538c06734ec60eb2c8f7410b1ad7c142923d6be87018b02",
+  "pins" : [
+    {
+      "identity" : "freetdskit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/oliwonders/FreeTDSKit.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "c88994562ead1ea518cf07d6deb6a1c96543d363"
+      }
+    },
+    {
+      "identity" : "swift-log",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-log.git",
+      "state" : {
+        "revision" : "3d8596ed08bd13520157f0355e35caed215ffbfa",
+        "version" : "1.6.3"
+      }
+    }
+  ],
+  "version" : 3
+}
