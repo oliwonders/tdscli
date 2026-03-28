@@ -18,7 +18,8 @@ let package = Package(
             name: "tdscli2",
             dependencies: [
                 .product(name: "FreeTDSKit", package: "FreeTDSKit")
-            ]
+            ],
+            resources: [.copy("Config.plist")]
         )
     ]
 )
