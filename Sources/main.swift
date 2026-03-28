@@ -2,11 +2,18 @@ import Foundation
 import FreeTDSKit
 import Logging
 
-//struct SpatialRow: Decodable, Equatable {
-//    let SpatialColumn: String
-//}
-
 let logger = Logger(label: "tdscli.main")
+
+guard let configURL = Bundle.module.url(forResource: "Config", withExtension: "plist"),
+      let config = NSDictionary(contentsOf: configURL),
+      let server   = config["server"]   as? String,
+      let username = config["username"] as? String,
+      let password = config["password"] as? String,
+      let database = config["database"] as? String
+else {
+    print("❌ Could not load Config.plist")
+    exit(1)
+}
 
 let version = FreeTDSKit.getFreeTDSVersion()
 print("building connection...")
@@ -15,10 +22,10 @@ do {
     print("FreeTDS version: \(version)")
     print("attempting to create TDSConnection…")
     let connection = try TDSConnection(
-        server: "127.0.0.1",
-        username: "sa",
-        password: "YourStr0ngP@ss",
-        database: "AdGeo3_Staging"
+        server: server,
+        username: username,
+        password: password,
+        database: database
     )
     print("connection created")
 

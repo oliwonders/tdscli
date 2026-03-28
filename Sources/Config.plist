@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>server</key>
+    <string>127.0.0.1</string>
+    <key>username</key>
+    <string>sa</string>
+    <key>password</key>
+    <string>YourStr0ngP@ss</string>
+    <key>database</key>
+    <string>AdGeo3_Staging</string>
+</dict>
+</plist>
