@@ -4,9 +4,8 @@ A simple Swift CLI for testing SQL Server connectivity via [FreeTDSKit](https://
 
 ## Requirements
 
-- macOS 14+
+- macOS 26+
 - Swift 6.1+
-- FreeTDS installed (`brew install freetds`)
 
 ## Setup
 
