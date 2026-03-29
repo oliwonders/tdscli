@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "tdscli2",
     platforms: [
-        .macOS(.v14,)
+        .macOS(.v15)
     ],
     dependencies: [
         .package(url: "https://github.com/oliwonders/FreeTDSKit.git", branch: "main")

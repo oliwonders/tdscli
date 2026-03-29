@@ -2,12 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <!-- SQL Server host — IP address or hostname -->
     <key>server</key>
-    <string>127.0.0.1</string>
+    <string>192.168.7.186</string>
+    <!-- SQL Server login -->
     <key>username</key>
     <string>sa</string>
     <key>password</key>
     <string>YourStr0ngP@ss</string>
+    <!-- Database to connect to -->
     <key>database</key>
     <string>AdGeo3_Staging</string>
 </dict>
