@@ -6,3 +6,10 @@ DerivedData/
 .swiftpm/configuration/registries.json
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 .netrc
+
+# Local connection config — copy Sources/Config.plist.example to create it
+Sources/Config.plist
+
+# Local assistant/editor setup — bring your own
+CLAUDE.md
+.claude/

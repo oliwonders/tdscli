@@ -5,25 +5,58 @@ A simple Swift CLI for testing SQL Server connectivity via [FreeTDSKit](https://
 ## Requirements
 
 - macOS 26+
-- Swift 6.1+
+- Swift 6.2+
+- A reachable SQL Server instance (and `sqlcmd` to seed the demo data)
 
-## Setup
+## Getting started
 
-Clone the repo and edit `Sources/Config.plist` with your connection details:
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/oliwonders/tdscli.git
+cd tdscli
+```
+
+### 2. Seed the demo database
+
+`Sources/schema.sql` creates a small `demo` database with a `Product` table and a
+handful of sample rows. Load it against your SQL Server with `sqlcmd`:
+
+```bash
+sqlcmd -S 192.168.7.179 -U sa -P 'YourStrong@Passw0rd' -i Sources/schema.sql
+```
+
+### 3. Configure the connection
+
+`Sources/Config.plist` is gitignored so credentials stay out of the repo. Create
+it from the tracked template and fill in your details:
+
+```bash
+cp Sources/Config.plist.example Sources/Config.plist
+```
 
 ```xml
 <key>server</key>   <string>your-server-ip-or-hostname</string>
 <key>username</key> <string>your-username</string>
 <key>password</key> <string>your-password</string>
-<key>database</key> <string>your-database</string>
+<key>database</key> <string>demo</string>
 ```
 
-## Build & Run
+The plist is bundled as a SwiftPM resource, so this step is required — without it
+the build fails with `Invalid Resource 'Config.plist': File not found`.
+
+### 4. Build and run
 
 ```bash
-git clone https://github.com/oliwonders/tdscli.git
-cd tdscli
 swift run
 ```
 
-Swift Package Manager will automatically resolve the FreeTDSKit dependency on first build.
+Swift Package Manager resolves the FreeTDSKit dependency on the first build —
+`libsybdb`, `libssl`, and `libcrypto` are bundled statically, so there is nothing
+to install with Homebrew.
+
+## What it does
+
+On each run, tdscli prints the bundled FreeTDS version, opens a `TDSConnection`
+using the values from `Config.plist`, runs a `SELECT` against `dbo.Product`,
+prints each decoded row, and closes the connection.

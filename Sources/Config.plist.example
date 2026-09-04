@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- SQL Server host — IP address or hostname -->
+    <key>server</key>
+    <string>your-server-ip-or-hostname</string>
+    <!-- SQL Server login -->
+    <key>username</key>
+    <string>your-username</string>
+    <key>password</key>
+    <string>your-password</string>
+    <!-- Database to connect to (created by Sources/schema.sql) -->
+    <key>database</key>
+    <string>demo</string>
+</dict>
+</plist>

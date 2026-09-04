@@ -20,7 +20,7 @@ print("building connection...")
 
 do {
     print("FreeTDS version: \(version)")
-    print("attempting to create TDSConnection…")
+    print("attempting to create TDSConnection to \(server)...")
     let connection = try TDSConnection(
         server: server,
         username: username,
@@ -30,21 +30,20 @@ do {
     print("connection created")
 
     let query =
-        "SELECT top 100 SpatialPolygon.STAsText() AS SpatialPolygon, zip as Zip FROM SpatialAdGeo.ZipCode_Import"
+        "SELECT TOP 100 ProductID, ProductName, Quantity FROM dbo.Product ORDER BY ProductID"
     print("query is: \(query)")
-  //  let result = try await connection.execute(query: query)
-  //  print("we have \(result.affectedRows) rows")
 
     for try await row in connection.query(
         queryString: query,
-        as: SpatialRow.self
+        as: ProductRow.self
     ) {
-        print("zip \(row.Zip)")
+        print("product #\(row.ProductID): \(row.ProductName) (qty \(row.Quantity))")
     }
+
     await connection.close()
 
 } catch {
     print("❌ error: \(error)")
-       dump(error)
-
+    dump(error)
+    exit(1)
 }
