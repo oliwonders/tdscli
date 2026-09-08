@@ -17,13 +17,21 @@ git clone https://github.com/oliwonders/tdscli.git
 cd tdscli
 ```
 
-### 2. Seed the demo database
+### 2. Create and seed the demo database
 
-`Sources/schema.sql` creates a small `demo` database with a `Product` table and a
-handful of sample rows. Load it against your SQL Server with `sqlcmd`:
+For Azure SQL Database, create the empty `demo` database while connected to
+`master`, then reconnect to `demo` to create and seed the `Product` table:
 
 ```bash
-sqlcmd -S 192.168.7.179 -U sa -P 'YourStrong@Passw0rd' -i Sources/schema.sql
+sqlcmd -S tcp:<server>.database.windows.net,1433 -d master -U <user> -P '<password>' -v DatabaseName="demo" -i Sources/create-database.sql
+sqlcmd -S tcp:<server>.database.windows.net,1433 -d demo -U <user> -P '<password>' -v DatabaseName="demo" -i Sources/schema.sql
+```
+
+For local SQL Server, `Sources/schema.sql` can create the database and switch to
+it automatically:
+
+```bash
+sqlcmd -S <server> -U <user> -P '<password>' -v DatabaseName="demo" -i Sources/schema.sql
 ```
 
 ### 3. Configure the connection

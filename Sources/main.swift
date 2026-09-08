@@ -1,8 +1,5 @@
 import Foundation
 import FreeTDSKit
-import Logging
-
-let logger = Logger(label: "tdscli.main")
 
 guard let configURL = Bundle.module.url(forResource: "Config", withExtension: "plist"),
       let config = NSDictionary(contentsOf: configURL),

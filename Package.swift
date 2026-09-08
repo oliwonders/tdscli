@@ -19,7 +19,7 @@ let package = Package(
             dependencies: [
                 .product(name: "FreeTDSKit", package: "FreeTDSKit")
             ],
-            exclude: ["schema.sql", "Config.plist.example"],
+            exclude: ["schema.sql", "create-database.sql", "Config.plist.example"],
             resources: [.copy("Config.plist")]
         )
     ]
